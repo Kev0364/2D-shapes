@@ -15,25 +15,26 @@ float mouthY;
  
 float centerX;
 
-void setup() {
-  
-  //Display Geometry
-  fullScreen();
-  //
-
-  background(64);
+float snowX;
+float snowY;
+float snowsize;
+color white = #FFFFFF;
  
+void setup() {
+ 
+  fullScreen(); 
+  //  
+  
   centerX = width/2;
   float centerY = height/2;
- 
   float jWidth = random(width/2, width*.75);
   float jHeight = random(height/2, height*.75);
- 
-  //stem
+    
+ //stem
   stroke(0, random(50, 200), 0);
   strokeWeight(random(5, 15));
   line(centerX, centerY-jHeight/2, centerX + random(-jWidth*.25, jWidth*.25), centerY - jHeight*.75);
- 
+   
   //pumpkin
   strokeWeight(2);
   fill(random(200, 256), random(75, 125), 0);
@@ -42,7 +43,7 @@ void setup() {
   ellipse(centerX, centerY, jWidth*.75, jHeight);
   ellipse(centerX, centerY, jWidth*.5, jHeight);
   ellipse(centerX, centerY, jWidth*.25, jHeight);
- 
+  
   //generate left eye
   leftEyeWidth = random(jWidth*.1, jWidth*.35);
   leftEyeHeight = random(jHeight*.1, jHeight*.25);
@@ -61,10 +62,11 @@ void setup() {
   mouthY = centerY + random(jHeight*.1, jHeight*.35);
  
   frameRate(10);
-}
  
-void draw() {
- 
+  }
+
+  void draw() {
+  
   //get the glowing color
   float r = random(100, 255);
   float g = random(r);
@@ -77,4 +79,15 @@ void draw() {
   //draw mouth
   arc(centerX, mouthY, mouthWidth, mouthHeight, 3.14, 2*3.14);
   line(centerX-mouthWidth/2, mouthY, centerX + mouthWidth/2, mouthY);
+  
+  //snow
+  snowX = random(width);
+  snowY = random(height);
+  fill (white);
+  snowsize = random(height*1/50, height*1/25);
+  ellipse(snowX, snowY, snowsize, snowsize); 
+  
 }
+
+    
+    
